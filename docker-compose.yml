@@ -12,7 +12,7 @@ services:
         CUDNN: "8"
     entrypoint: ["/bin/bash"]
     volumes:
-      - ./mmdetection:/mmdetection
+      - ./:/mmdetection
     tty: true
     ipc: host
     deploy:
