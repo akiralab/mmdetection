@@ -1,12 +1,17 @@
-version: "3"
+version: "3.8"
 
 services:
   mmdetection:
-    container_name: MMDet
+    container_name: mmdetection
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
-    entrypoint: bash
+      dockerfile: docker/Dockerfile
+      args:
+        PYTORCH: "1.9.0"
+        CUDA: "11.1"
+        CUDNN: "8"
+    entrypoint: ["/bin/bash"]
+    volumes:
       - ./mmdetection:/mmdetection
     tty: true
     ipc: host
