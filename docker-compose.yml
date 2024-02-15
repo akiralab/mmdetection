@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  mmdetection:
+    container_name: MMDet
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    entrypoint: bash
+      - ./mmdetection:/mmdetection
+    tty: true
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
